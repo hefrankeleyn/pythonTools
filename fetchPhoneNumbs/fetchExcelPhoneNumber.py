@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - 
 def initParameters(conf_path):
     parameters={}
     cfg = ConfigParser()
-    cfg.read(conf_path)
+    cfg.read(conf_path,'utf-8')
     # 获取文件路径
     dataExcelPath = cfg.get('DATASOURCE','dataExcelPath')
     parameters['dataExcelPath'] = dataExcelPath
@@ -89,6 +89,6 @@ try:
         excelFilePath = os.path.join(excelPath,newFileName)
         # 生成excel
         writeExcel(excelFilePath,phoneNumbers)
-        logging.info('提取的数据文件已经生成：%s' % (excelPath))
+        logging.info('提取的数据文件已经生成：%s' % (excelFilePath))
 except Exception as e:
     logging.error(e)
